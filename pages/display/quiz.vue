@@ -32,8 +32,8 @@ export default {
       getCurrentQuiz() {
           this.quiz = {choises: ["a", "b", "c", "d"], image: "", description: "まんげまんげ", answer: 2};
       },
-      selectQuiz(choise) {
-          this.$router.push("/wating_nino");
+      finishQuiz() {
+          this.$router.push("/display/choises");
       }
   },
   created() {

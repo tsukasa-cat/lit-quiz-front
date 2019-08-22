@@ -25,15 +25,19 @@ export default {
   },
   data() {
     return {
-      quiz: null
+      quiz: null,
+      answers: []
     }
   },
   methods: {
       getCurrentQuiz() {
           this.quiz = {choises: ["a", "b", "c", "d"], image: "", description: "まんげまんげ", answer: 2};
       },
-      selectQuiz(choise) {
-          this.$router.push("/wating_nino");
+      getAnswers() {
+        this.answers = [];
+      },
+      finishQuiz() {
+          this.$router.push("/display/choises");
       }
   },
   created() {
