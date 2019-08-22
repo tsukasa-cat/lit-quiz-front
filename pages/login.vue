@@ -25,37 +25,50 @@
         background-color: #f2f2f2;
         position: relative;
         height: 100vh;
+        box-sizing: border-box;
     }
+    .box{
+        text-align: center;
+    }
+
     
     .logoImage{
-        background-color: cadetblue;
+        background-image: url("~../assets/LitKingLogo.png");
+        -webkit-background-size: contain;
+        background-size: contain;
         height: 45vw;
-        width: 90vw;
+        width: 80vw;
         object-fit: contain;
+        margin: 0 auto;
+        margin-top: 20vh;
+        margin-bottom: 10vh;
     }
 
     .teamSelect {
         border: 1px solid #f2f2f2;
-        width: 90vw;
-        height: 5vw;
+        width: 60vw;
+        height: 10vw;
+        font-size: 4vw;
+        margin-bottom: 1vh;
     }
 
     .passwordInput {
         border: 1px solid #f2f2f2;
-        width: 90vw;
-        height: 5vw;
+        width: 60vw;
+        height: 10vw;
+        font-size: 24px;
+        margin-top: 0;
+        margin-bottom: 10vh;
+        font-size: 4vw;
     }
 
     .loginButton {
-        width: 90vw;
-        background-color: #212121;
-        color: #fff;
-        font-family: 'Noto Serif', serif;
-    }
-    .box{
-        position: absolute;
-        top:50%;
-        transform: translateY(-50%);
+        width: 60vw;
+        height: 20vw;
+        background-image: url("~../assets/LoginButtonImg.png");
+        -webkit-background-size: contain;
+        background-size: contain;
+        border: none;
     }
 
 </style>
@@ -63,18 +76,19 @@
 <template>
 
     <body>
-        <div class="box">
-            <div class="logoImage">
-                <img src="" alt="">
+           <div class="box">
+            <div class="logoImage" style="{ backgroundImage: `url(${~/assets/LitKingLogo.png})` }">
+<!--                <img src="~/assets/LitKingLogo.png" alt="">-->
             </div>
             <div id="form">
                 <select v-model="selected_team_name" class="teamSelect">
+                    <option value='' disabled selected style='display:none;'>選択してください</option>
                     <option v-for="team in teams" v-bind:value="team.name">{{team.display_name}}</option>
                 </select>
                 <input type="password" v-model="password" name="password" placeholder='Password' class="passwordInput">
-                <input type="button" v-on:click="login()" value="ログイン" class="loginButton">
+                <input type="button" v-on:click="login()" value="" class="loginButton">
             </div>
-        </div>
+            </div>
     </body>
 </template>
 <script>
