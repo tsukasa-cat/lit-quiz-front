@@ -93,6 +93,7 @@
 </template>
 <script>
     import Vuex from 'vuex'
+    import Cookie from 'cookie-universal-nuxt'
     export default {
         head: {
             titleTemplate: '%s - Nuxt.js',
@@ -229,25 +230,11 @@
             }
         },
         methods: {
-            // check: function() {
-            //     var selected_team_name = this.selected_team_name;
-            //     let selected_team = this.teams.filter(team => team.name == this.selected_team_name)[0];
-            //     if (selected_team["password"] == this.password) {
-            //         this.selected_team = selected_team;
-            //         return true;
-            //     } else {
-            //         return false;
-            //     }
-            // },
-            // login: function() {
-            //     if(this.check()) {
-            //         alert("ok");
-            //         redirect(301, '/');
-            //     } else {
-            //         alert("NG");
-            //     }
-            // },
             async login() {
+                Cookie.set('team_name', this.selected_team_name, {
+                    path: '/',
+                    maxAge: 60 * 60 * 24 * 7
+                });
                 try {
                     await this.$store.dispatch("login", {
                         team_name: this.selected_team_name,
