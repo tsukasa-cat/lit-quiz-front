@@ -49,6 +49,7 @@
         background-size: contain;
         border: none;
     }
+
     .quizText{
         width: 400px;
         height: 100px;
@@ -60,7 +61,10 @@
     .correctChoice{
         width: 200px;
     }
-
+    .answer{
+        width: 100px;
+        height: 50px;
+    }
 </style>
 
 <template>
@@ -82,6 +86,7 @@
             <br>
             <br>
             <br><br>
+
             <br>
             <br>
         </div>
