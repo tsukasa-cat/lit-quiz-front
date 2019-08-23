@@ -82,12 +82,36 @@
     }
 
 
+    .box__storacks__storack__title--opend{
+        margin: 0;
+        line-height: calc(20vh - 2px);
+        vertical-align: center;
+        text-align: center;
+        font-size: 36px;
+         color: blue!important;
+        font-weight: 700;
+    }
+
+    .box__storacks__storack--opened {
+      background-image: url("~../../assets/opendBG.png");
+      -webkit-background-size: 95%;
+      background-size: 95%;
+      background-repeat: no-repeat;
+      color: blue!important;
+    }
+
+    .box__storacks__storack__title--opend {
+      
+    }
+
 </style>
 <template>
-<div class="box">
+<div v-show="this.strucks" class="box">
     <ul class="box__storacks">
-        <li v-for="(strucks, index) in this.strucks" class="box__storacks__storack .box__storacks__storack__opend">
-            <p class="box__storacks__storack__title">{{hiraganas[index]}}</p>
+
+        <li v-for="(struck, index) in this.strucks" v-on:click="select(struck, index)" v-bind:class="{ 'box__storacks__storack': true, 'box__storacks__storack--opened': struck.isOpened}">
+            <p v-if="struck.isOpened" class="box__storacks__storack__title--opend">{{struck.point}}</p>
+            <p v-else class="box__storacks__storack__title">
         </li>
     </ul> 
     <div class="sideBox">
@@ -122,6 +146,13 @@ export default {
       },
       async getTeams() {
        this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
+      },
+      async select(struck, index){
+        if (struck.isOpened) {
+          return;
+        }
+        // await axios.post("https://e01b0f377f24.vps.mizucoffee.net/struck/open", {id: index});
+        struck.isOpened = true;
       },
       finishQuiz() {
           this.$router.push("/display/choises");
