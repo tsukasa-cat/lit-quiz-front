@@ -49,10 +49,17 @@
         background-size: contain;
         border: none;
     }
-    
+
     .quizText{
         width: 400px;
         height: 100px;
+    }
+    .choiceText{
+        width: 200px;
+        height: 100px;
+    }
+    .correctChoice{
+        width: 200px;
     }
     .answer{
         width: 100px;
@@ -64,21 +71,22 @@
 
     <body>
         <div class="box">
+           <br>
+           <br>
+           <br>
+            <input type="textarea" placeholder="問題文" class="    quizText">
             <br>
             <br>
             <br>
-            <input type="textarea" placeholder="問題文" class="quizText">
+            <input type="textarea" placeholder="選択肢1" class="choiceText">
+            <input type="textarea" placeholder="選択肢2" class="choiceText">
+            <br>
+            <input type="radio" name="correct" class="correctChoice">
+            <input type="radio" name="correct">
             <br>
             <br>
-            <br>
-            <input type="textarea" placeholder="選択肢1" class="answer">
-            <input type="textarea" placeholder="選択肢2" class="answer">
-            <input type="textarea" placeholder="選択肢3" class="answer">
-            <input type="textarea" placeholder="選択肢4" class="answer">
-            <br>
-            <br>
-            <br>
-            <br>
+            <br><br>
+
             <br>
             <br>
         </div>

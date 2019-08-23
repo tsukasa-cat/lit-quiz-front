@@ -98,7 +98,7 @@ export default {
       async getTeams() {
         // this.teams = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/team/list")).data;
         this.teams = [
-          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこちょこちょこちょこ", choice_id: 1},
           {name: "A", choise: "ちょこ", choice_id: 2},
           {name: "A", choise: "ちょこ", choice_id: 1},
           {name: "A", choise: "ちょこ", choice_id: 0},
