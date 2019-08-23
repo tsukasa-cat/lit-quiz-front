@@ -151,7 +151,7 @@ export default {
         if (struck.isOpened) {
           return;
         }
-        // await axios.post("https://e01b0f377f24.vps.mizucoffee.net/struck/open", {id: index});
+        await axios.post("https://e01b0f377f24.vps.mizucoffee.net/struck/open", {id: index});
         struck.isOpened = true;
       },
       finishQuiz() {
