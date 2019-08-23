@@ -74,16 +74,17 @@
            <br>
            <br>
            <br>
-            <input type="textarea" placeholder="問題文" class="    quizText">
+            <input type="textarea" v-model="new_quiz.description" placeholder="問題文" class="quizText">
             <br>
             <br>
             <br>
-            <input type="textarea" placeholder="選択肢1" class="choiceText">
-            <input type="textarea" placeholder="選択肢2" class="choiceText">
+            <input type="textarea" v-model="new_quiz.answer[0]" placeholder="選択肢1" class="choiceText">
+            <input type="textarea" v-model="new_quiz.answer[1]" placeholder="選択肢2" class="choiceText">
             <br>
-            <input type="radio" name="correct" class="correctChoice">
-            <input type="radio" name="correct">
+            <input type="radio" v-model="new_quiz.answer_id" value="0" name="correct" class="correctChoice">
+            <input type="radio" v-model="new_quiz.answer_id" value="1" name="correct">
             <br>
+            <input value="作成" type="button" v-on:click="create_quiz()">
             <br>
             <br><br>
 
@@ -124,12 +125,22 @@
         data() {
             return {
                 quizes: [],
+                new_quiz: {description: "", answer: ["", ""], answer_id: null}
             }
         },
         methods: {
             getQuizes: async function() {
                 this.quizes = (await axios.get("http://lit-king.mizucoffee.com/quiz/list")).data;
                 console.log(this.quizes);
+            },
+            async create_quiz() {
+                console.log(this.new_quiz);
+                var post_quiz = this.new_quiz;
+                if (post_quiz["answer"] instanceof Array) {
+                    post_quiz["answer"] = post_quiz["answer"].join(",");
+                }
+                await axios.post("http://lit-king.mizucoffee.com/quiz", post_quiz);
+                this.$router.push("/admins/create_quiz");
             }
         },
         mounted() {
