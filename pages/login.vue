@@ -6,6 +6,9 @@
         height: 100vh;
         box-sizing: border-box;
         background-image: url("../assets/ScreenBG.png");
+        -webkit-background-size: cover;
+        background-size: cover ;
+        background-position: center;
     }
 
     .box {
