@@ -59,10 +59,8 @@
                <ul>
                    <li v-for="quiz in this.quizes">
                        <p>問題: {{quiz.description}}</p>
-                       <ol>
-                            <li v-for="choise in quiz.choises">{{choise.name}}</li>
-                        </ol>
-                   </li>
+                       <p v-for="choise in quiz.choises">{{choise.name}}</p>
+                    </li>
                </ul>
             </div>
     </body>
@@ -94,8 +92,8 @@
             }
         },
         methods: {
-            getQuizes: function() {
-                this.quizes = axios.get("https://e01b0f377f24.vps.mizucoffee.net//quiz/list").data;
+            getQuizes: async function() {
+                this.quizes = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/list")).data;
                 console.log(this.quizes);
             }
         },
