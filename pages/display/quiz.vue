@@ -1,17 +1,104 @@
+<style>
+    body {
+        background-color: #fff;
+        position: relative;
+        height: 100vh;
+        box-sizing: border-box;
+    }
+
+/*
+    .logoImage {
+        background-image: url("~../../assets/LitKingLogo.png");
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 45vw;
+        width: 80vw;
+        object-fit: contain;
+        margin: 0 auto;
+        margin-top: 20vh;
+    }
+*/
+
+    
+
+    body{
+        background-image: url("~../../assets/ScreenBG.png");
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    .quizSet {
+        display: flex;
+    }
+
+    .quizBox {
+        width: 45vw;
+        margin: 5vh 0 5vh 5vw;
+        height: 90vh;
+        overflow: hidden;
+        background-color:  blue;
+    }
+    .quizBox__quizText{
+        width: 40vw;
+        height: 5vw;
+        color: aliceblue;
+        font-size: 24px;
+        padding: 10px;
+    }
+    .quizBox__quizImage{
+        width: 45vw;
+        
+    }
+    
+    .quizList{
+        width: 50vw;
+        height: 90vh;
+        display: flex;
+    }
+    .quizListBox__quizLists{
+        position: relative;
+        width: 50vw;
+        top: 50%;
+        transform: translateY(-50%)
+    }
+
+    .quizListBox__quizLists li {
+        display: inline-flex;
+        background-color: gray;
+/*        border: 1px solid white;*/
+        list-style: none;
+        width: 20vw;
+        height: 20vw;  
+    }
+
+    .quizImage {
+        height: 70vh;
+        margin-top: 15vh;
+        margin-left: 5vw;
+    }
+
+
+
+</style>
 <template>
-<div v-if="this.quiz">
-    <p>Q1. {{this.quiz.description}}</p> 
-    <ul>
-        <li v-for="choise in this.quiz.choices">
-            <p>{{choise.text}}</p>
-            <input v-bind:value="choise.name" v-on:click="selectQuiz(choise.name)">
-        </li>
-    </ul> 
-</div>
-<div v-else>
-    aaa
-</div>
+    <div v-if="this.quiz" class="quizSet">
+        <div class="quizBox">
+            <p class="quizBox__quizText">Q1. {{this.quiz.description}}</p>
+            <img class="quizBox__quizImage" src="~../../assets/defaultImage.png">
+        </div>
+        <div class="quizListBox">
+            <ul class="quizListBox__quizLists">
+                <li v-for="choice in this.quiz.choices">
+                   {{choice.name}}:{{choice.text}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div v-else>
+        aaa
+    </div>
 </template>
+
 
 <script>
 import Vuex from 'vuex'

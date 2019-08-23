@@ -1,51 +1,32 @@
 <style>
-    export default {
-        head () {
-            return {
-                script:;
-
-                    {
-                    src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'
-                }
-
-                ;
-                link:;
-
-                    {
-                    rel: ;
-                    'stylesheet'href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap'
-                }
-
-
-            }
-        }
-    }
 
     body {
-        background-color: #f2f2f2;
+        background-color: #fff;
         position: relative;
         height: 100vh;
         box-sizing: border-box;
     }
-    .box{
+
+    .box {
         text-align: center;
     }
 
-    
-    .logoImage{
+
+    .logoImage {
         background-image: url("~../assets/LitKingLogo.png");
         -webkit-background-size: contain;
         background-size: contain;
+        background-repeat: no-repeat;
         height: 45vw;
         width: 80vw;
         object-fit: contain;
         margin: 0 auto;
         margin-top: 20vh;
-        margin-bottom: 10vh;
+        padding-top: 20vh;
     }
 
     .teamSelect {
-        border: 1px solid #f2f2f2;
+        border: 3px solid #f2f2f2;
         width: 60vw;
         height: 10vw;
         font-size: 4vw;
@@ -53,7 +34,7 @@
     }
 
     .passwordInput {
-        border: 1px solid #f2f2f2;
+        border: 3px solid #f2f2f2;
         width: 60vw;
         height: 10vw;
         font-size: 24px;
@@ -69,6 +50,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         border: none;
+        background-color: transparent;
     }
 
 </style>
@@ -76,9 +58,8 @@
 <template>
 
     <body>
-           <div class="box">
+        <div class="box">
             <div class="logoImage" style="{ backgroundImage: `url(${~/assets/LitKingLogo.png})` }">
-<!--                <img src="~/assets/LitKingLogo.png" alt="">-->
             </div>
             <div id="form">
                 <select v-model="selected_team_name" class="teamSelect">
@@ -88,7 +69,7 @@
                 <input type="password" v-model="password" name="password" placeholder='Password' class="passwordInput">
                 <input type="button" v-on:click="login()" value="" class="loginButton">
             </div>
-            </div>
+        </div>
     </body>
 </template>
 <script>
@@ -231,10 +212,6 @@
         },
         methods: {
             async login() {
-                Cookie.set('team_name', this.selected_team_name, {
-                    path: '/',
-                    maxAge: 60 * 60 * 24 * 7
-                });
                 try {
                     await this.$store.dispatch("login", {
                         team_name: this.selected_team_name,

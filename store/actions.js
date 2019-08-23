@@ -39,6 +39,7 @@ export default {
         // 入力したメールアドレスとパスワードが
         // すでに登録されているメールアドレスとパスワードと一致した場合、変数dataに入力値が渡されます。
         let data = selected_team;
+        document.cookie = 'team_name='+team_name+'; path=/';
         // Cookie.set('team_name', team_name, {
         //   path: '/',
         //   maxAge: 60 * 60 * 24 * 7
