@@ -113,6 +113,7 @@
                 </li>
             </ul>
         </div>
+        <input type="button" value="投票をとじる" v-on:click="finishQuiz()">
     </div>
     <div v-else>
         aaa
@@ -142,8 +143,9 @@ export default {
           this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
           console.log(this.quiz);
       },
-      finishQuiz() {
-          this.$router.push("/display/choises");
+      async finishQuiz() {
+          await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/stop");
+          this.$router.push("/display/answers");
       }
   },
   created() {

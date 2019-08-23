@@ -100,9 +100,6 @@
       color: blue!important;
     }
 
-    .box__storacks__storack__title--opend {
-      
-    }
 
 </style>
 <template>
@@ -135,6 +132,7 @@ export default {
   },
   data() {
     return {
+      status: 0,
       strucks: [],
       quiz: null,
       hiraganas: ["あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ", "た"]
@@ -148,14 +146,17 @@ export default {
        this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
       },
       async select(struck, index){
-        if (struck.isOpened) {
+        if (struck.isOpened || this.status == 1) {
           return;
         }
         await axios.post("https://e01b0f377f24.vps.mizucoffee.net/struck/open", {id: index});
         struck.isOpened = true;
       },
-      finishQuiz() {
-          this.$router.push("/display/choises");
+      async next() {
+        if (this.status == 1) {
+          await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/next");
+          
+        }
       }
   },
   created() {
