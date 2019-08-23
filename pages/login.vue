@@ -5,6 +5,7 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
+        background-image: url("../assets/ScreenBG.png");
     }
 
     .box {
