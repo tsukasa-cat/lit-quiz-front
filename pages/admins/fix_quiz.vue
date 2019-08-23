@@ -63,6 +63,7 @@
             <li v-for="quiz in this.quizes">
                 <p>問題: {{quiz.description}}</p>
                 <input type="textarea" placeholder="新しい問題文"　class="fixQuizTextarea">
+                <input type="button" value="修正する">
                 <p v-for="choise in quiz.choises">{{choise.name}}</p>
             </li>
         </ul>

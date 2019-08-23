@@ -4,41 +4,61 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
+        background-image: url("../assets/ScreenBG.png");
+        -webkit-background-size: cover;
+        background-size: cover ;
+        background-position: center;
     }
 
     .logoImage {
-        background-image: url("~../assets/LitKingLogo.png");
+        background-image: url("../assets/LitKingLogo.png");
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
         height: 45vw;
         width: 80vw;
         object-fit: contain;
         margin: 0 auto;
-        margin-top: 20vh;
+        padding-top: 10vh;
+    }
+    p{
+        height: 10vh;
+        width: 70vw;
+        background-image: url("../assets/quizTextBG.png");
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100% ;
+        margin: auto;
+        padding: 20px;
     }
 
-    ul {
+    .quizListBox__quizLists{
+        margin-left: 10vw;
+        margin-top: 10vw;
+        width: 80vw;
         padding: 0;
-        display: flex;
-        flex-flow: row wrap;
-        width: 100vw;
-        list-style: none;
-        margin: 0;
     }
 
-    input {
-        width: 30vw;
-        height: 30vw;
-        background-image: url("~../assets/ChoiceBG.png");
-        -webkit-background-size: contain;
-        background-size: contain;
-        border: none;
-        background-color: transparent;
-        margin: 5vw;
+    .quizListBox__quizLists li {
+        display: inline-flex;
+        list-style: none;
+        margin: 1vw;
+        width: 35vw;
+        height: 35vw;  
+        font-size: 24px;
+        bottom: 20px;
+        position: relative;
+        background-image: url("../assets/ChoiceBG.png");
+        -webkit-background-size: cover;
+        background-size: cover;
         color: white;
-        text-align: center;
+    }
+    input {
+        width: 35vw;
+        height: 35vw;
         font-size: 10vw;
+        text-align: center;
+        color: white;
     }
 
 </style>
@@ -47,7 +67,7 @@
         <div class="logoImage" style="{ backgroundImage: `url(${~../assets/LitKingLogo.png})` }"></div>
         <div v-if="this.quiz">
             <p>Q1. {{this.quiz.description}}</p>
-            <ul>
+            <ul class="quizListBox__quizLists">
                 <li v-for="(choice, index) in this.quiz.choices">
                     <input type="button" v-bind:value="choice.name" v-on:click="selectQuiz(index)">
                 </li>
