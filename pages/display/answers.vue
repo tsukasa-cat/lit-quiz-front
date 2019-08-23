@@ -55,11 +55,11 @@
     }
 </style>
 <template>
-<div v-if="this.teams">
+<div v-if="this.answers">
     <ul class="teams">
-        <li v-for="team in this.teams" v-bind:class="{ 'teams__teamBox': true, 'teams__teamBox--seikai': is_checked && quiz.answer == team.choice_id}">
-            <h1 class="teams__teamBox__teamName">{{team.name}}</h1>
-            <p class="teams__teamBox__teamAnswer">{{team.choise}}</p>
+        <li v-for="answer in this.answers" v-bind:class="{ 'teams__teamBox': true, 'teams__teamBox--seikai': is_checked && quiz.answer == getChoiceId(answer.choices)}">
+            <h1 class="teams__teamBox__teamName">{{answer.name}}</h1>
+            <!-- <p class="teams__teamBox__teamAnswer">{{getChoiceText(answer.choices)}}</p> -->
         </li>
     </ul> 
     <div class="logo" v-on:click="is_checked = true">
@@ -85,6 +85,7 @@ export default {
   },
   data() {
     return {
+      answers: [],
       quiz: null,
       teams: null,
       is_checked: false
@@ -96,32 +97,7 @@ export default {
           console.log(this.quiz );
       },
       async getTeams() {
-        // this.teams = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/team/list")).data;
-        this.teams = [
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 2},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 0},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 3},
-          {name: "A", choise: "ちょこ", choice_id: 3},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-          {name: "A", choise: "ちょこ", choice_id: 1},
-        ];
+        this.answers = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/answer")).data;
         console.log(this.teams);
       },
       check() {
@@ -130,6 +106,21 @@ export default {
       async next() {
         // (await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/current"));
         this.$router.push("/display/storack_out");
+      },
+      getChoiceId(choiscs) {
+        var max = 0;
+        var max_id = 0;
+        choices.forEach(choice => {
+          if (choise.count > max) {
+            max_id = choice.id;
+            max = choice.count;
+          }
+        });
+        return max_id;
+      },
+      getChoiceText(choices) {
+        var index = this.getChoiceId(choices);
+        return this.quiz.choices[index].text;
       }
   },
   created() {

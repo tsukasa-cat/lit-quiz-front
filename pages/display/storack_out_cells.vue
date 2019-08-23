@@ -58,8 +58,8 @@
 <template>
 <div class="box">
     <ul class="box__storacks">
-        <li v-for="(strucks, index) in this.strucks" class="box__storacks__storack">
-            <p class="box__storacks__storack__title">{{hiraganas[index]}}</p>
+        <li v-for="(struck, index) in this.strucks" class="box__storacks__storack">
+            <p class="box__storacks__storack__title">{{hiraganas[index]}}:{{struck.point}}</p>
         </li>
     </ul> 
     <div class="logoImage"></div>
@@ -80,9 +80,9 @@ export default {
   },
   data() {
     return {
-      strucks: [],
       quiz: null,
-      hiraganas: ["あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ", "た"]
+      hiraganas: ["あ", "い", "う", "え", "お", "か", "き", "く", "け", "こ", "さ", "し", "す", "せ", "そ", "た"],
+      strucks: []
     }
   },
   methods: {
@@ -90,7 +90,8 @@ export default {
           this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
       },
       async getTeams() {
-       this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
+        this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
+        console.log(this.strucks);
       },
       finishQuiz() {
           this.$router.push("/display/choises");
