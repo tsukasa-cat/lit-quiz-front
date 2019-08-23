@@ -62,7 +62,25 @@
         font-size: 36px;
         color: black;
         font-weight: 700;
+        
+        background-image: url("../../assets/opendBG.png");
+        -webkit-background-size: 95%;
+        background-size: 95%;
+        background-repeat: no-repeat;
+        color: blue;
+        
     }
+    .box__storacks__storack__opend{
+        background-image: url("../../assets/opendBG.png");
+        -webkit-background-size: 95%;
+        background-size: 95%;
+        background-repeat: no-repeat;
+        color: blue;
+    }
+    .box__storacks__storack__titel__opend{
+        color: blue;
+    }
+
 
     .box__storacks__storack__title--opend{
         margin: 0;
@@ -87,9 +105,10 @@
 <template>
 <div v-show="this.strucks" class="box">
     <ul class="box__storacks">
+
         <li v-for="(struck, index) in this.strucks" v-on:click="select(struck, index)" v-bind:class="{ 'box__storacks__storack': true, 'box__storacks__storack--opened': struck.isOpened}">
             <p v-if="struck.isOpened" class="box__storacks__storack__title--opend">{{struck.point}}</p>
-            <p v-else class="box__storacks__storack__title">{{hiraganas[index]}}</p>
+            <p v-else class="box__storacks__storack__title"></p>
         </li>
     </ul> 
     <div class="sideBox">

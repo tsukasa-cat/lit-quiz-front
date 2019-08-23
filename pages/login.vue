@@ -5,6 +5,10 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
+        background-image: url("../assets/ScreenBG.png");
+        -webkit-background-size: cover;
+        background-size: cover ;
+        background-position: center;
     }
 
     .box {
@@ -16,12 +20,12 @@
         background-image: url("../assets/LitKingLogo.png");
         -webkit-background-size: contain;
         background-size: contain;
+        background-position: center;
         background-repeat: no-repeat;
         height: 45vw;
         width: 80vw;
         object-fit: contain;
         margin: 0 auto;
-        margin-top: 20vh;
         padding-top: 20vh;
     }
 
