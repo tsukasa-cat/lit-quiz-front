@@ -108,7 +108,7 @@
 
         <li v-for="(struck, index) in this.strucks" v-on:click="select(struck, index)" v-bind:class="{ 'box__storacks__storack': true, 'box__storacks__storack--opened': struck.isOpened}">
             <p v-if="struck.isOpened" class="box__storacks__storack__title--opend">{{struck.point}}</p>
-            <p v-else class="box__storacks__storack__title">
+            <p v-else class="box__storacks__storack__title"></p>
         </li>
     </ul> 
     <div class="sideBox">
