@@ -171,6 +171,11 @@
                         "display_name": "N",
                         password: "we_love_aldy"
                     },
+                     {
+                        "name": "o",
+                        "display_name": "O",
+                        password: "we_love_aldy"
+                    },
                     {
                         "name": "p",
                         "display_name": "P",
