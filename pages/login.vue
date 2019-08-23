@@ -13,7 +13,7 @@
 
 
     .logoImage {
-        background-image: url("~../assets/LitKingLogo.png");
+        background-image: url("../assets/LitKingLogo.png");
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
@@ -46,7 +46,7 @@
     .loginButton {
         width: 60vw;
         height: 20vw;
-        background-image: url("~../assets/LoginButtonImg.png");
+        background-image: url("../assets/LoginButtonImg.png");
         -webkit-background-size: contain;
         background-size: contain;
         border: none;
@@ -59,7 +59,7 @@
 
     <body>
         <div class="box">
-            <div class="logoImage" style="{ backgroundImage: `url(${~/assets/LitKingLogo.png})` }">
+            <div class="logoImage" style="{ backgroundImage: `url(${/assets/LitKingLogo.png})` }">
             </div>
             <div id="form">
                 <select v-model="selected_team_name" class="teamSelect">

@@ -39,6 +39,7 @@
         padding: 0;
     }
 
+<<<<<<< HEAD
     .quizListBox__quizLists li {
         display: inline-flex;
         list-style: none;
@@ -51,6 +52,17 @@
         background-image: url("../assets/ChoiceBG.png");
         -webkit-background-size: cover;
         background-size: cover;
+=======
+    input {
+        width: 30vw;
+        height: 30vw;
+        background-image: url("../assets/ChoiceBG.png");
+        -webkit-background-size: contain;
+        background-size: contain;
+        border: none;
+        background-color: transparent;
+        margin: 5vw;
+>>>>>>> 3f50e77c72f9481233745129053f9b48ad7c9279
         color: white;
     }
     input {
@@ -64,7 +76,7 @@
 </style>
 <template>
     <div>
-        <div class="logoImage" style="{ backgroundImage: `url(${~../assets/LitKingLogo.png})` }"></div>
+        <div class="logoImage" style="{ backgroundImage: `url(${../assets/LitKingLogo.png})` }"></div>
         <div v-if="this.quiz">
             <p>Q1. {{this.quiz.description}}</p>
             <ul class="quizListBox__quizLists">
@@ -103,17 +115,17 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
           console.log(this.quiz);
           this.confirmIsAnswered();
       },
       async selectQuiz(index) {
         // console.log(index);
         // return;
-        await axios.post('https://e01b0f377f24.vps.mizucoffee.net/answer', {
+        await axios.post('http://lit-king.mizucoffee.com/answer', {
         // axios.post('http://192.168.11.97:3000/answer', {
           answer_id: index,
-          team_id: this.team_name 
+          team_id: this.team_name.toUpperCase()
         });
 
         var answered_quiz_ids = localStorage.getItem("answered_quiz_ids") ? JSON.parse(localStorage.getItem("answered_quiz_ids")) : [];

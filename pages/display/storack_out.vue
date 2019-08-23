@@ -5,7 +5,7 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
-        background-image: url("~../../assets/ScreenBG.png");
+        background-image: url("../../assets/ScreenBG.png");
         -webkit-background-size: cover;
         background-size: cover;
     }
@@ -22,7 +22,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("~../../assets/LitKingLogo.png");
+        background-image: url("../../assets/LitKingLogo.png");
     }
     .titleImage{
         margin-left: 40px;
@@ -32,7 +32,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("~../../assets/StorackTitle.png");
+        background-image: url("../../assets/StorackTitle.png");
     }
     .box__storacks{
         margin-top: 15vh;
@@ -93,7 +93,7 @@
     }
 
     .box__storacks__storack--opened {
-      background-image: url("~../../assets/opendBG.png");
+      background-image: url("../../assets/opendBG.png");
       -webkit-background-size: 95%;
       background-size: 95%;
       background-repeat: no-repeat;
@@ -115,6 +115,7 @@
         <div class="titleImage"></div>
         <div class="logoImage"></div>
     </div>
+    <input type="button" v-on:click="next" value="つぎへ">
 </div>
 </template>
 
@@ -140,29 +141,32 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
       },
       async getTeams() {
-       this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
+        // await axios.post("http://lit-king.mizucoffee.com/struck", {struck: "10,1,1,1,1,1,1,1,1,1,1,2,-1,1,10,1"});
+       this.strucks = (await axios.get("http://lit-king.mizucoffee.com/struck/list")).data;
       },
       async select(struck, index){
         if (struck.isOpened || this.status == 1) {
           return;
         }
-        await axios.post("https://e01b0f377f24.vps.mizucoffee.net/struck/open", {id: index});
+        await axios.post("http://lit-king.mizucoffee.com/struck/open", {id: index});
+        
         struck.isOpened = true;
       },
       async next() {
-        if (this.status == 1) {
-          await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/next");
-          
-        }
+        // if (this.status == 1) {
+          await axios.post("http://lit-king.mizucoffee.com/quiz/next");
+
+        // }
       }
   },
   created() {
 
   },
   mounted() {
+    
       this.getCurrentQuiz();
       this.getTeams();
   }

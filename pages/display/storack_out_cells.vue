@@ -5,7 +5,7 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
-        background-image: url("~../../assets/ScreenBG.png");
+        background-image: url("../../assets/ScreenBG.png");
         -webkit-background-size: cover;
         background-size: cover;
     }
@@ -22,7 +22,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("~../../assets/LitKingLogo.png");
+        background-image: url("../../assets/LitKingLogo.png");
     }
     .box__storacks{
         margin-top: 10vh;
@@ -87,10 +87,10 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
       },
       async getTeams() {
-        this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
+        this.strucks = (await axios.get("http://lit-king.mizucoffee.com/struck/list")).data;
         console.log(this.strucks);
       },
       finishQuiz() {
