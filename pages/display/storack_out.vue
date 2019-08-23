@@ -63,7 +63,7 @@
         color: black;
         font-weight: 700;
         
-        background-image: url("~../../assets/opendBG.png");
+        background-image: url("../../assets/opendBG.png");
         -webkit-background-size: 95%;
         background-size: 95%;
         background-repeat: no-repeat;
@@ -71,7 +71,7 @@
         
     }
     .box__storacks__storack__opend{
-        background-image: url("~../../assets/opendBG.png");
+        background-image: url("../../assets/opendBG.png");
         -webkit-background-size: 95%;
         background-size: 95%;
         background-repeat: no-repeat;
