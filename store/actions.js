@@ -1,3 +1,4 @@
+import Cookie from 'cookie-universal-nuxt'
 export default {
     async login({ commit }, { team_name, password }) {
       console.log(commit)
@@ -38,6 +39,10 @@ export default {
         // 入力したメールアドレスとパスワードが
         // すでに登録されているメールアドレスとパスワードと一致した場合、変数dataに入力値が渡されます。
         let data = selected_team;
+        // Cookie.set('team_name', team_name, {
+        //   path: '/',
+        //   maxAge: 60 * 60 * 24 * 7
+        // });
         // 変数dataのを次のmutations.jsにあるAUTHED_USERメソッドに渡します。
         commit("AUTHED_USER", data)
       } catch (e) {

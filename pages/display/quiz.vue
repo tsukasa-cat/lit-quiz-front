@@ -58,6 +58,8 @@
     .quizListBox__quizLists{
         position: relative;
         width: 50vw;
+        top: 50%;
+        transform: translateY(-50%)
     }
 
     .quizListBox__quizLists li {
@@ -68,7 +70,6 @@
         width: 20vw;
         height: 20vw;  
     }
-    .quizListBox__quizLists li inputP
 
     .quizImage {
         height: 70vh;
@@ -87,8 +88,8 @@
         </div>
         <div class="quizListBox">
             <ul class="quizListBox__quizLists">
-                <li v-for="choise in this.quiz.choises">
-                   
+                <li v-for="choice in this.quiz.choices">
+                   {{choice.name}}:{{choice.text}}
                 </li>
             </ul>
         </div>
@@ -98,49 +99,38 @@
     </div>
 </template>
 
+
 <script>
-    import Vuex from 'vuex'
-    export default {
-        head: {
-            titleTemplate: '%s - Nuxt.js',
-            meta: [{
-                    charset: 'utf-8'
-                },
-                {
-                    name: 'viewport',
-                    content: 'width=device-width, initial-scale=1'
-                },
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: 'Meta description'
-                }
-            ]
-        },
-        data() {
-            return {
-                quiz: null
-            }
-        },
-        methods: {
-            getCurrentQuiz() {
-                this.quiz = {
-                    choises: ["a", "b", "c", "d"],
-                    image: "",
-                    description: "パンはパンでも食べられないパンはなんだ？",
-                    answer: 2
-                };
-            },
-            finishQuiz() {
-                this.$router.push("/display/choises");
-            }
-        },
-        created() {
-
-        },
-        mounted() {
-            this.getCurrentQuiz();
-        }
+import Vuex from 'vuex'
+import axios from 'axios'
+export default {
+  head: {
+    titleTemplate: '%s - Nuxt.js',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Meta description' }
+    ]
+  },
+  data() {
+    return {
+      quiz: null
     }
+  },
+  methods: {
+      async getCurrentQuiz() {
+          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          console.log(this.quiz);
+      },
+      finishQuiz() {
+          this.$router.push("/display/choises");
+      }
+  },
+  created() {
 
+  },
+  mounted() {
+      this.getCurrentQuiz();
+  }
+}
 </script>
