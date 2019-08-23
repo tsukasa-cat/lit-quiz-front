@@ -1,10 +1,73 @@
+<style>
+
+    body{
+        background-color: #fff;
+        position: relative;
+        height: 100vh;
+        box-sizing: border-box;
+        background-image: url("~../../assets/ScreenBG.png");
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+
+    .box{
+        display: flex;
+    }
+    
+    .logoImage{
+        margin-left: 40px;
+        margin-top: 75vh;
+        width: 25vw;
+        height: 20vw;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("~../../assets/LitKingLogo.png");
+    }
+    .box__storacks{
+        margin-top: 10vh;
+        width: 80vh;
+        height: 80vh;
+        display: flex;
+        flex-wrap: wrap;
+        border: 5px solid black;
+        padding-left: 0;
+        margin-left: 40px;
+    }
+    .box__storacks__storack{
+        width: calc(20vh - 2px);
+        height: calc(20vh - 2px);
+        border: 1px solid black;
+        background-color: lawngreen;
+        color: white;
+        list-style: none;
+        position: relative;
+    }
+    
+    .box__storacks__storack__title{
+        margin: 0;
+        line-height: calc(20vh - 2px);
+        vertical-align: center;
+        text-align: center;
+        font-size: 36px;
+        color: black;
+        font-weight: 700;
+    }
+
+    
+
+    
+
+
+</style>
 <template>
-<div>
-    <ul>
-        <li v-for="(hiragana, index) in this.hiraganas">
-            {{hiragana}}
+<div class="box">
+    <ul class="box__storacks">
+        <li v-for="(hiragana, index) in this.hiraganas" class="box__storacks__storack">
+            <p class="box__storacks__storack__title">{{hiragana}}</p>
         </li>
     </ul> 
+    <div class="logoImage"></div>
 </div>
 </template>
 
