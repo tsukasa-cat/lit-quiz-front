@@ -24,6 +24,7 @@
         flex-flow: row wrap;
         width: 100vw;
         list-style: none;
+        margin: 0;
     }
 
     input {
@@ -42,8 +43,8 @@
 
 </style>
 <template>
-  <div>
-    <div class="logoImage" style="{ backgroundImage: `url(${~/assets/LitKingLogo.png})` }"></div>
+    <div>
+        <div class="logoImage" style="{ backgroundImage: `url(${~../assets/LitKingLogo.png})` }"></div>
         <div v-if="this.quiz">
             <p>Q1. {{this.quiz.description}}</p>
             <ul>
