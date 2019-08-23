@@ -62,13 +62,31 @@
         font-size: 36px;
         color: black;
         font-weight: 700;
+        
+        background-image: url("~../../assets/opendBG.png");
+        -webkit-background-size: 95%;
+        background-size: 95%;
+        background-repeat: no-repeat;
+        color: blue;
+        
     }
+    .box__storacks__storack__opend{
+        background-image: url("~../../assets/opendBG.png");
+        -webkit-background-size: 95%;
+        background-size: 95%;
+        background-repeat: no-repeat;
+        color: blue;
+    }
+    .box__storacks__storack__titel__opend{
+        color: blue;
+    }
+
 
 </style>
 <template>
 <div class="box">
     <ul class="box__storacks">
-        <li v-for="(strucks, index) in this.strucks" class="box__storacks__storack">
+        <li v-for="(strucks, index) in this.strucks" class="box__storacks__storack .box__storacks__storack__opend">
             <p class="box__storacks__storack__title">{{hiraganas[index]}}</p>
         </li>
     </ul> 
