@@ -42,13 +42,13 @@
 
 </style>
 <template>
-    <div>
-        <div class="logoImage" style="{ backgroundImage: `url(${~/assets/LitKingLogo.png})` }"></div>
+  <div>
+    <div class="logoImage" style="{ backgroundImage: `url(${~/assets/LitKingLogo.png})` }"></div>
         <div v-if="this.quiz">
             <p>Q1. {{this.quiz.description}}</p>
             <ul>
-                <li v-for="choise in this.quiz.choises">
-                    <input v-bind:value="choise" v-on:click="selectQuiz(choise)">
+                <li v-for="(index, choice) in this.quiz.choices">
+                    <input v-bind:value="choice.name" v-on:click="selectQuiz(index)">
                 </li>
             </ul>
         </div>
@@ -58,49 +58,68 @@
     </div>
 </template>
 
+
+
 <script>
-    import Vuex from 'vuex'
-    export default {
-        head: {
-            titleTemplate: '%s - Nuxt.js',
-            meta: [{
-                    charset: 'utf-8'
-                },
-                {
-                    name: 'viewport',
-                    content: 'width=device-width, initial-scale=1'
-                },
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: 'Meta description'
-                }
-            ]
-        },
-        data() {
-            return {
-                quiz: null
-            }
-        },
-        methods: {
-            getCurrentQuiz() {
-                this.quiz = {
-                    choises: ["a", "b", "c", "d"],
-                    image: "",
-                    description: "まんげまんげ",
-                    answer: 2
-                };
-            },
-            selectQuiz(choise) {
-                this.$router.push("/wating_nino")
-            }
-        },
-        created() {
-
-        },
-        mounted() {
-            this.getCurrentQuiz();
-        }
+import Vuex from 'vuex'
+import axios from 'axios'
+import cookie from 'cookie-universal-nuxt'
+export default {
+  head: {
+    titleTemplate: '%s - Nuxt.js',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Meta description' }
+    ]
+  },
+  data() {
+    return {
+      quiz: null,
+      team_name: null
     }
-
+  },
+  methods: {
+      async getCurrentQuiz() {
+          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          console.log(this.quiz);
+      },
+      selectQuiz(index) {
+        console.log(index);
+        return;
+        // axios.post('https://e01b0f377f24.vps.mizucoffee.net/answer', {
+        axios.post('http://192.168.11.97:3000/answer', {
+          answer_id: index,
+          team_id: this.team_name 
+        }).then(response => {
+          this.$router.push("/wating_nino");
+        });
+      },
+      confirmLogin() {
+        // this.$cookies.get('article01')
+        this.team_name = this.getCookieArray().team_name;
+        if (!this.team_name) {
+          this.$router.push("/login");
+        }
+        console.log(this.team_name);
+      },
+      getCookieArray(){
+        var arr = new Array();
+        if(document.cookie != ''){
+          var tmp = document.cookie.split('; ');
+          for(var i=0;i<tmp.length;i++){
+            var data = tmp[i].split('=');
+            arr[data[0]] = decodeURIComponent(data[1]);
+          }
+        }
+        return arr;
+      }
+  },
+  created() {
+  },
+  mounted() {
+    this.getCurrentQuiz();
+    this.confirmLogin();
+  }
+}
 </script>
