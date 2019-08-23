@@ -6,6 +6,7 @@
         box-sizing: border-box;
     }
 
+/*
     .logoImage {
         background-image: url("~../../assets/LitKingLogo.png");
         -webkit-background-size: contain;
@@ -17,91 +18,129 @@
         margin: 0 auto;
         margin-top: 20vh;
     }
+*/
 
-    ul {
-        padding: 0;
-        display: flex;
-        flex-flow: row wrap;
-        width: 100vw;
-        height: 20vh;
-        list-style: none;
-        text-align: center;
-    }
-    li{
-        width: 20vw;   
-    }
-    img{
-        width: 40vw;
-        margin-top: 5vh;
-    }
-    .box{
-        width: 100vw;
-        height: 100vh;
-        text-align: center;
+    
+
+    body{
         background-image: url("~../../assets/ScreenBG.png");
         -webkit-background-size: cover;
         background-size: cover;
     }
-    .questionList{
-        width: 40vw;
-        height: 10vh;
-        margin: 0 auto;
+    .quizSet {
+        display: flex;
+    }
+
+    .quizBox {
+        width: 45vw;
+        margin: 5vh 0 5vh 5vw;
+        height: 90vh;
         overflow: hidden;
+        background-color:  blue;
     }
-    li{
+    .quizBox__quizText{
+        width: 40vw;
+        height: 5vw;
+        color: aliceblue;
+        font-size: 24px;
+        padding: 10px;
+    }
+    .quizBox__quizImage{
+        width: 45vw;
+        
+    }
+    
+    .quizList{
+        width: 50vw;
+        height: 90vh;
+        display: flex;
+    }
+    .quizListBox__quizLists{
+        position: relative;
+        width: 50vw;
+    }
+
+    .quizListBox__quizLists li {
+        display: inline-flex;
         background-color: gray;
-        border: 1px solid white;
+/*        border: 1px solid white;*/
+        list-style: none;
+        width: 20vw;
+        height: 20vw;  
     }
+    .quizListBox__quizLists li inputP
+
+    .quizImage {
+        height: 70vh;
+        margin-top: 15vh;
+        margin-left: 5vw;
+    }
+
+
 
 </style>
 <template>
-<div class="box">
-    <div v-if="this.quiz">
-        <img class="quizImage" src="~../../assets/defaultImage.png">
-        <p>Q1. {{this.quiz.description}}</p>
-        <div class="questionList">
-        <ul>
-            <li v-for="choise in this.quiz.choises">
-                <input v-bind:value="choise" v-on:click="selectQuiz(choise)">
-            </li>
-        </ul>
+    <div v-if="this.quiz" class="quizSet">
+        <div class="quizBox">
+            <p class="quizBox__quizText">Q1. {{this.quiz.description}}</p>
+            <img class="quizBox__quizImage" src="~../../assets/defaultImage.png">
+        </div>
+        <div class="quizListBox">
+            <ul class="quizListBox__quizLists">
+                <li v-for="choise in this.quiz.choises">
+                   
+                </li>
+            </ul>
         </div>
     </div>
     <div v-else>
         aaa
     </div>
-</div>
 </template>
 
 <script>
-import Vuex from 'vuex'
-export default {
-  head: {
-    titleTemplate: '%s - Nuxt.js',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Meta description' }
-    ]
-  },
-  data() {
-    return {
-      quiz: null
-    }
-  },
-  methods: {
-      getCurrentQuiz() {
-          this.quiz = {choises: ["a", "b", "c", "d"], image: "", description: "まんげまんげ", answer: 2};
-      },
-      finishQuiz() {
-          this.$router.push("/display/choises");
-      }
-  },
-  created() {
+    import Vuex from 'vuex'
+    export default {
+        head: {
+            titleTemplate: '%s - Nuxt.js',
+            meta: [{
+                    charset: 'utf-8'
+                },
+                {
+                    name: 'viewport',
+                    content: 'width=device-width, initial-scale=1'
+                },
+                {
+                    hid: 'description',
+                    name: 'description',
+                    content: 'Meta description'
+                }
+            ]
+        },
+        data() {
+            return {
+                quiz: null
+            }
+        },
+        methods: {
+            getCurrentQuiz() {
+                this.quiz = {
+                    choises: ["a", "b", "c", "d"],
+                    image: "",
+                    description: "パンはパンでも食べられないパンはなんだ？",
+                    answer: 2
+                };
+            },
+            finishQuiz() {
+                this.$router.push("/display/choises");
+            }
+        },
+        created() {
 
-  },
-  mounted() {
-      this.getCurrentQuiz();
-  }
-}
+        },
+        mounted() {
+            this.getCurrentQuiz();
+        }
+    }
+
 </script>
