@@ -212,10 +212,6 @@
         },
         methods: {
             async login() {
-                Cookie.set('team_name', this.selected_team_name, {
-                    path: '/',
-                    maxAge: 60 * 60 * 24 * 7
-                });
                 try {
                     await this.$store.dispatch("login", {
                         team_name: this.selected_team_name,
