@@ -5,7 +5,7 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
-        background-image: url("~../../assets/ScreenBG.png");
+        background-image: url("../../assets/ScreenBG.png");
         -webkit-background-size: cover;
         background-size: cover;
     }
@@ -24,7 +24,7 @@
     .quizBox__quizText{
         width: 50vw;
         font-size: 24px;
-        background-image:url("~../../assets/quizTextBG.png");
+        background-image:url("../../assets/quizTextBG.png");
         -webkit-background-size: 95% 100%;
         background-size: 95% 100%;
         padding: 30px;
@@ -68,7 +68,7 @@
         font-size: 24px;
         bottom: 20px;
         position: relative;
-        background-image: url("~../../assets/ChoiceBG.png");
+        background-image: url("../../assets/ChoiceBG.png");
         -webkit-background-size: cover;
         background-size: cover;
         color: white;
@@ -92,7 +92,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("~../../assets/LitKingLogo.png");
+        background-image: url("../../assets/LitKingLogo.png");
     }
    
 
@@ -103,7 +103,7 @@
     <div v-if="this.quiz" class="quizSet">
         <div class="quizBox">
             <p class="quizBox__quizText">Q1. {{this.quiz.description}}</p>
-            <img class="quizBox__quizImage" src="~../../assets/defaultImage.png">
+            <img class="quizBox__quizImage" src="../../assets/defaultImage.png">
         </div>
         <div class="quizListBox">
             <div class="quizListBox__logoImage"></div>

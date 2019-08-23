@@ -5,7 +5,7 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
-        background-image: url("~../../assets/ScreenBG.png");
+        background-image: url("../../assets/ScreenBG.png");
         -webkit-background-size: cover;
         background-size: cover;
     }
@@ -22,7 +22,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("~../../assets/LitKingLogo.png");
+        background-image: url("../../assets/LitKingLogo.png");
     }
     .titleImage{
         margin-left: 40px;
@@ -32,7 +32,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("~../../assets/StorackTitle.png");
+        background-image: url("../../assets/StorackTitle.png");
     }
     .box__storacks{
         margin-top: 15vh;
@@ -75,7 +75,7 @@
     }
 
     .box__storacks__storack--opened {
-      background-image: url("~../../assets/opendBG.png");
+      background-image: url("../../assets/opendBG.png");
       -webkit-background-size: 95%;
       background-size: 95%;
       background-repeat: no-repeat;

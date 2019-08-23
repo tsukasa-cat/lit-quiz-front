@@ -49,7 +49,7 @@
         right: 0;
         width: 40vw;
         height: 20vh;
-        background-image: url("~../../assets/LitKingLogo.png");
+        background-image: url("../../assets/LitKingLogo.png");
         -webkit-background-size: 100% 100%;
         background-size: 100% 100%;
     }

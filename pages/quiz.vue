@@ -7,7 +7,7 @@
     }
 
     .logoImage {
-        background-image: url("~../assets/LitKingLogo.png");
+        background-image: url("../assets/LitKingLogo.png");
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
@@ -30,7 +30,7 @@
     input {
         width: 30vw;
         height: 30vw;
-        background-image: url("~../assets/ChoiceBG.png");
+        background-image: url("../assets/ChoiceBG.png");
         -webkit-background-size: contain;
         background-size: contain;
         border: none;
@@ -44,7 +44,7 @@
 </style>
 <template>
     <div>
-        <div class="logoImage" style="{ backgroundImage: `url(${~../assets/LitKingLogo.png})` }"></div>
+        <div class="logoImage" style="{ backgroundImage: `url(${../assets/LitKingLogo.png})` }"></div>
         <div v-if="this.quiz">
             <p>Q1. {{this.quiz.description}}</p>
             <ul>

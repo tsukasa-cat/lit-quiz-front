@@ -5,7 +5,7 @@
         position: relative;
         height: 100vh;
         box-sizing: border-box;
-        background-image: url("~../../assets/ScreenBG.png");
+        background-image: url("../../assets/ScreenBG.png");
         -webkit-background-size: cover;
         background-size: cover;
     }
@@ -22,7 +22,7 @@
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url("~../../assets/LitKingLogo.png");
+        background-image: url("../../assets/LitKingLogo.png");
     }
     .box__storacks{
         margin-top: 10vh;
