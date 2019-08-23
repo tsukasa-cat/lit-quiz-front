@@ -1,28 +1,10 @@
 <style>
-    body {
+
+    body{
         background-color: #fff;
         position: relative;
         height: 100vh;
         box-sizing: border-box;
-    }
-
-/*
-    .logoImage {
-        background-image: url("~../../assets/LitKingLogo.png");
-        -webkit-background-size: contain;
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 45vw;
-        width: 80vw;
-        object-fit: contain;
-        margin: 0 auto;
-        margin-top: 20vh;
-    }
-*/
-
-    
-
-    body{
         background-image: url("~../../assets/ScreenBG.png");
         -webkit-background-size: cover;
         background-size: cover;
@@ -32,50 +14,87 @@
     }
 
     .quizBox {
-        width: 45vw;
+        width: 50vw;
         margin: 5vh 0 5vh 5vw;
         height: 90vh;
+        position: relative;
         overflow: hidden;
-        background-color:  blue;
-    }
-    .quizBox__quizText{
-        width: 40vw;
-        height: 5vw;
-        color: aliceblue;
-        font-size: 24px;
-        padding: 10px;
-    }
-    .quizBox__quizImage{
-        width: 45vw;
         
     }
+    .quizBox__quizText{
+        width: 50vw;
+        font-size: 24px;
+        background-image:url("~../../assets/quizTextBG.png");
+        -webkit-background-size: 95% 100%;
+        background-size: 95% 100%;
+        padding: 30px;
+        padding-right: 0;
+        color: dimgray;
+        font-weight: 700;
+        
+    }
+    .quizBox__quizImage{
+        width: 50vw;
+        height: 50vw;
+        margin-top: 3vw;
+        position: relative;
+        bottom: 0;
+    }
+    
     
     .quizList{
-        width: 50vw;
+        width: 40vw;
         height: 90vh;
         display: flex;
     }
-    .quizListBox__quizLists{
+    .quizListBox{
         position: relative;
-        width: 50vw;
-        top: 50%;
-        transform: translateY(-50%)
+    }
+    
+    .quizListBox__quizLists{
+        position: absolute;
+        bottom:0;
+        width: 40vw;
+        padding: 0;
+        padding-left: 20px;
     }
 
     .quizListBox__quizLists li {
         display: inline-flex;
-        background-color: gray;
-/*        border: 1px solid white;*/
         list-style: none;
-        width: 20vw;
-        height: 20vw;  
+        margin: 1vw;
+        width: 18vw;
+        height: 18vw;  
+        font-size: 24px;
+        bottom: 20px;
+        position: relative;
+        background-image: url("~../../assets/ChoiceBG.png");
+        -webkit-background-size: cover;
+        background-size: cover;
+        color: white;
+    }
+    .quizListBox__quizLists li p{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
     }
 
-    .quizImage {
-        height: 70vh;
-        margin-top: 15vh;
-        margin-left: 5vw;
+    .quizListBox__logoImage{
+        margin-left: 40px;
+        margin-top: 10vh;
+        width: 35vw;
+        height: 20vw;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("~../../assets/LitKingLogo.png");
     }
+   
 
 
 
@@ -87,9 +106,10 @@
             <img class="quizBox__quizImage" src="~../../assets/defaultImage.png">
         </div>
         <div class="quizListBox">
+            <div class="quizListBox__logoImage"></div>
             <ul class="quizListBox__quizLists">
                 <li v-for="choice in this.quiz.choices">
-                   {{choice.name}}:{{choice.text}}
+                   <p>{{choice.name}}:{{choice.text}}</p>
                 </li>
             </ul>
         </div>
