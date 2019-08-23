@@ -49,12 +49,39 @@
         background-size: contain;
         border: none;
     }
-
+    
+    .quizText{
+        width: 400px;
+        height: 100px;
+    }
+    .answer{
+        width: 100px;
+        height: 50px;
+    }
 </style>
 
 <template>
 
     <body>
+        <div class="box">
+            <br>
+            <br>
+            <br>
+            <input type="textarea" placeholder="問題文" class="quizText">
+            <br>
+            <br>
+            <br>
+            <input type="textarea" placeholder="選択肢1" class="answer">
+            <input type="textarea" placeholder="選択肢2" class="answer">
+            <input type="textarea" placeholder="選択肢3" class="answer">
+            <input type="textarea" placeholder="選択肢4" class="answer">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
            <div class="box">
                <ul>
                    <li v-for="quiz in this.quizes">
