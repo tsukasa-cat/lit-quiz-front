@@ -16,18 +16,28 @@
     
     .logoImage{
         margin-left: 40px;
-        margin-top: 75vh;
-        width: 25vw;
+        margin-top: 25vh;
+        width: 35vw;
         height: 20vw;
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
         background-image: url("~../../assets/LitKingLogo.png");
     }
+    .titleImage{
+        margin-left: 40px;
+        margin-top: 15vh;
+        width: 35vw;
+        height: 20vw;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url("~../../assets/StorackTitle.png");
+    }
     .box__storacks{
-        margin-top: 10vh;
-        width: 80vh;
-        height: 80vh;
+        margin-top: 15vh;
+        width: 70vh;
+        height: 70vh;
         display: flex;
         flex-wrap: wrap;
         border: 5px solid black;
@@ -35,8 +45,8 @@
         margin-left: 40px;
     }
     .box__storacks__storack{
-        width: calc(20vh - 2px);
-        height: calc(20vh - 2px);
+        width: calc(70vh/4 - 2px);
+        height: calc(70vh/4 - 2px);
         border: 1px solid black;
         background-color: lawngreen;
         color: white;
@@ -67,7 +77,10 @@
             <p class="box__storacks__storack__title">{{hiragana}}</p>
         </li>
     </ul> 
-    <div class="logoImage"></div>
+    <div class="sideBox">
+        <div class="titleImage"></div>
+        <div class="logoImage"></div>
+    </div>
 </div>
 </template>
 
