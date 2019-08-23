@@ -39,7 +39,6 @@
         padding: 0;
     }
 
-<<<<<<< HEAD
     .quizListBox__quizLists li {
         display: inline-flex;
         list-style: none;
@@ -52,17 +51,6 @@
         background-image: url("../assets/ChoiceBG.png");
         -webkit-background-size: cover;
         background-size: cover;
-=======
-    input {
-        width: 30vw;
-        height: 30vw;
-        background-image: url("../assets/ChoiceBG.png");
-        -webkit-background-size: contain;
-        background-size: contain;
-        border: none;
-        background-color: transparent;
-        margin: 5vw;
->>>>>>> 3f50e77c72f9481233745129053f9b48ad7c9279
         color: white;
     }
     input {
