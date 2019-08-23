@@ -2,8 +2,8 @@
 <div v-if="this.quiz">
     <p>Q1. {{this.quiz.description}}</p> 
     <ul>
-        <li v-for="choise in this.quiz.choises">
-            <input v-bind:value="choise" v-on:click="selectQuiz(choise)">
+        <li v-for="choice in this.quiz.choices">
+            <input v-bind:value="choice.name" v-on:click="selectQuiz(choice)">
         </li>
     </ul> 
 </div>
@@ -14,6 +14,7 @@
 
 <script>
 import Vuex from 'vuex'
+import axios from 'axios'
 export default {
   head: {
     titleTemplate: '%s - Nuxt.js',
@@ -29,8 +30,9 @@ export default {
     }
   },
   methods: {
-      getCurrentQuiz() {
-          this.quiz = {choises: ["a", "b", "c", "d"], image: "", description: "まんげまんげ", answer: 2};
+      async getCurrentQuiz() {
+          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          console.log(this.quiz);
       },
       selectQuiz(choise) {
           this.$router.push("/wating_nino");
