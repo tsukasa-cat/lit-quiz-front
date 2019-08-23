@@ -1,9 +1,8 @@
 <template>
-<div v-if="this.quiz">
-    <p>Q1. {{this.quiz.description}}</p> 
+<div v-if="this.teams">
     <ul>
-        <li v-for="choise in this.quiz.choises">
-            <input v-bind:value="choise" v-on:click="selectQuiz(choise)">
+        <li v-for="team in this.teams">
+            {{team.name}}
         </li>
     </ul> 
 </div>
@@ -14,6 +13,7 @@
 
 <script>
 import Vuex from 'vuex'
+import axios from 'axios'
 export default {
   head: {
     titleTemplate: '%s - Nuxt.js',
@@ -26,15 +26,23 @@ export default {
   data() {
     return {
       quiz: null,
-      answers: []
+      teams: null
     }
   },
   methods: {
-      getCurrentQuiz() {
-          this.quiz = {choises: ["a", "b", "c", "d"], image: "", description: "まんげまんげ", answer: 2};
+      async getCurrentQuiz() {
+          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
       },
-      getAnswers() {
-        this.answers = [];
+      async getTeams() {
+        // this.teams = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/team/list")).data;
+        this.teams = [
+          {name: "A"},
+          {name: "A"},
+          {name: "A"},
+          {name: "A"},
+          {name: "A"}
+        ];
+        console.log(this.teams);
       },
       finishQuiz() {
           this.$router.push("/display/choises");
@@ -45,6 +53,7 @@ export default {
   },
   mounted() {
       this.getCurrentQuiz();
+      this.getTeams();
   }
 }
 </script>
