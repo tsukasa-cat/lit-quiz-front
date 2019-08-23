@@ -47,8 +47,8 @@
         <div v-if="this.quiz">
             <p>Q1. {{this.quiz.description}}</p>
             <ul>
-                <li v-for="(index, choice) in this.quiz.choices">
-                    <input v-bind:value="choice.name" v-on:click="selectQuiz(index)">
+                <li v-for="(choice, index) in this.quiz.choices">
+                    <input type="button" v-bind:value="choice.name" v-on:click="selectQuiz(index)">
                 </li>
             </ul>
         </div>
@@ -64,6 +64,7 @@
 import Vuex from 'vuex'
 import axios from 'axios'
 import cookie from 'cookie-universal-nuxt'
+import { async } from 'q';
 export default {
   head: {
     titleTemplate: '%s - Nuxt.js',
@@ -83,17 +84,24 @@ export default {
       async getCurrentQuiz() {
           this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
           console.log(this.quiz);
+          this.confirmIsAnswered();
       },
-      selectQuiz(index) {
-        console.log(index);
-        return;
-        // axios.post('https://e01b0f377f24.vps.mizucoffee.net/answer', {
-        axios.post('http://192.168.11.97:3000/answer', {
+      async selectQuiz(index) {
+        // console.log(index);
+        // return;
+        await axios.post('https://e01b0f377f24.vps.mizucoffee.net/answer', {
+        // axios.post('http://192.168.11.97:3000/answer', {
           answer_id: index,
           team_id: this.team_name 
-        }).then(response => {
-          this.$router.push("/wating_nino");
         });
+
+        var answered_quiz_ids = localStorage.getItem("answered_quiz_ids") ? JSON.parse(localStorage.getItem("answered_quiz_ids")) : [];
+        console.log(answered_quiz_ids);
+        answered_quiz_ids.push(this.quiz._id);
+
+        localStorage.setItem("answered_quiz_ids", JSON.stringify(answered_quiz_ids));
+        this.$router.push("/wating_nino");
+        
       },
       confirmLogin() {
         // this.$cookies.get('article01')
@@ -102,6 +110,21 @@ export default {
           this.$router.push("/login");
         }
         console.log(this.team_name);
+      },
+      confirmIsAnswered() {
+        var answered_quiz_ids = localStorage.getItem("answered_quiz_ids") ? JSON.parse(localStorage.getItem("answered_quiz_ids")) : [];
+        var flag = false;
+        console.log(this.quiz);
+        console.log("a"+this.quiz._id);
+        console.log("a"+answered_quiz_ids);
+        for(var i = 0; i< answered_quiz_ids.length; i++) {
+          if (answered_quiz_ids[i] == this.quiz._id) {
+            flag = true;
+          }
+        }
+        if (flag) {
+          this.$router.push("/wating_nino");
+        }
       },
       getCookieArray(){
         var arr = new Array();
@@ -118,7 +141,11 @@ export default {
   created() {
   },
   mounted() {
+    // async function() {
+    //   await this.getCurrentQuiz();
+    // }
     this.getCurrentQuiz();
+    // this.confirmIsAnswered();
     this.confirmLogin();
   }
 }
