@@ -59,7 +59,7 @@
     <ul class="teams">
         <li v-for="answer in this.answers" v-bind:class="{ 'teams__teamBox': true, 'teams__teamBox--seikai': is_checked && quiz.answer == getChoiceId(answer.choices)}">
             <h1 class="teams__teamBox__teamName">{{answer.name}}</h1>
-            <!-- <p class="teams__teamBox__teamAnswer">{{getChoiceText(answer.choices)}}</p> -->
+            <p class="teams__teamBox__teamAnswer">{{getChoiceText(answer.choices)}}</p>
         </li>
     </ul> 
     <div class="logo" v-on:click="is_checked = true">
@@ -93,25 +93,25 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
           console.log(this.quiz );
       },
       async getTeams() {
-        this.answers = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/answer")).data;
+        this.answers = (await axios.get("http://lit-king.mizucoffee.com/answer")).data;
         console.log(this.teams);
       },
       check() {
         this.is_checked = true;
       },
       async next() {
-        // (await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/current"));
+        // (await axios.post("http://lit-king.mizucoffee.com/quiz/current"));
         this.$router.push("/display/storack_out");
       },
-      getChoiceId(choiscs) {
+      getChoiceId(choices) {
         var max = 0;
         var max_id = 0;
         choices.forEach(choice => {
-          if (choise.count > max) {
+          if (choice.count > max) {
             max_id = choice.id;
             max = choice.count;
           }

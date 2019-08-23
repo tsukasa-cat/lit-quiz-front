@@ -87,10 +87,10 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
       },
       async getTeams() {
-        this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
+        this.strucks = (await axios.get("http://lit-king.mizucoffee.com/struck/list")).data;
         console.log(this.strucks);
       },
       finishQuiz() {

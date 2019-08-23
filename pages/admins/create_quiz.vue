@@ -128,7 +128,7 @@
         },
         methods: {
             getQuizes: async function() {
-                this.quizes = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/list")).data;
+                this.quizes = (await axios.get("http://lit-king.mizucoffee.com/quiz/list")).data;
                 console.log(this.quizes);
             }
         },
