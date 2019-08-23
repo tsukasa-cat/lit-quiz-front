@@ -25,6 +25,10 @@
         list-style: none;
         position: relative;
     }
+
+    .teams__teamBox--seikai {
+      background-color: red;
+    }
    
     .teams__teamBox__teamName{
         position: absolute;
@@ -53,12 +57,14 @@
 <template>
 <div v-if="this.teams">
     <ul class="teams">
-        <li v-for="team in this.teams" class="teams__teamBox">
+        <li v-for="team in this.teams" v-bind:class="{ 'teams__teamBox': true, 'teams__teamBox--seikai': is_checked && quiz.answer == team.choice_id}">
             <h1 class="teams__teamBox__teamName">{{team.name}}</h1>
             <p class="teams__teamBox__teamAnswer">{{team.choise}}</p>
         </li>
     </ul> 
-    <div class="logo"></div>
+    <div class="logo" v-on:click="is_checked = true">
+      <input type="button" v-on:click="next()" value="次へ">
+    </div>
 </div>
 <div v-else>
     aaa
@@ -80,44 +86,50 @@ export default {
   data() {
     return {
       quiz: null,
-      teams: null
+      teams: null,
+      is_checked: false
     }
   },
   methods: {
       async getCurrentQuiz() {
           this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
+          console.log(this.quiz );
       },
       async getTeams() {
         // this.teams = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/team/list")).data;
         this.teams = [
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
-          {name: "A", choise: "ちょこ"},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 2},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 0},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 3},
+          {name: "A", choise: "ちょこ", choice_id: 3},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
+          {name: "A", choise: "ちょこ", choice_id: 1},
         ];
         console.log(this.teams);
       },
-      finishQuiz() {
-          this.$router.push("/display/choises");
+      check() {
+        this.is_checked = true;
+      },
+      async next() {
+        // (await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/current"));
+        this.$router.push("/display/storack_out");
       }
   },
   created() {
