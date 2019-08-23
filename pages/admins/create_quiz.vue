@@ -130,7 +130,7 @@
         },
         methods: {
             getQuizes: async function() {
-                this.quizes = (await axios.get("http://lit-king.mizucoffee.com/quiz/list")).data;
+                this.quizes = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/list")).data;
                 console.log(this.quizes);
             },
             async create_quiz() {
@@ -139,7 +139,7 @@
                 if (post_quiz["answer"] instanceof Array) {
                     post_quiz["answer"] = post_quiz["answer"].join(",");
                 }
-                await axios.post("http://lit-king.mizucoffee.com/quiz", post_quiz);
+                await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz", post_quiz);
                 this.$router.push("/admins/create_quiz");
             }
         },

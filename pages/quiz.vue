@@ -103,14 +103,14 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
+          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
           console.log(this.quiz);
           this.confirmIsAnswered();
       },
       async selectQuiz(index) {
         // console.log(index);
         // return;
-        await axios.post('http://lit-king.mizucoffee.com/answer', {
+        await axios.post('https://e01b0f377f24.vps.mizucoffee.net/answer', {
         // axios.post('http://192.168.11.97:3000/answer', {
           answer_id: index,
           team_id: this.team_name.toUpperCase()

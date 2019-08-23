@@ -93,18 +93,18 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
+          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
           console.log(this.quiz );
       },
       async getTeams() {
-        this.answers = (await axios.get("http://lit-king.mizucoffee.com/answer")).data;
+        this.answers = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/answer")).data;
         console.log(this.teams);
       },
       check() {
         this.is_checked = true;
       },
       async next() {
-        // (await axios.post("http://lit-king.mizucoffee.com/quiz/current"));
+        // (await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/current"));
         this.$router.push("/display/storack_out");
       },
       getChoiceId(choices) {

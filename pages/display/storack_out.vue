@@ -141,23 +141,23 @@ export default {
   },
   methods: {
       async getCurrentQuiz() {
-          this.quiz = (await axios.get("http://lit-king.mizucoffee.com/quiz/current")).data;
+          this.quiz = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/quiz/current")).data;
       },
       async getTeams() {
-        // await axios.post("http://lit-king.mizucoffee.com/struck", {struck: "10,1,1,1,1,1,1,1,1,1,1,2,-1,1,10,1"});
-       this.strucks = (await axios.get("http://lit-king.mizucoffee.com/struck/list")).data;
+        // await axios.post("https://e01b0f377f24.vps.mizucoffee.net/struck", {struck: "10,1,1,1,1,1,1,1,1,1,1,2,-1,1,10,1"});
+       this.strucks = (await axios.get("https://e01b0f377f24.vps.mizucoffee.net/struck/list")).data;
       },
       async select(struck, index){
         if (struck.isOpened || this.status == 1) {
           return;
         }
-        await axios.post("http://lit-king.mizucoffee.com/struck/open", {id: index});
+        await axios.post("https://e01b0f377f24.vps.mizucoffee.net/struck/open", {id: index});
         
         struck.isOpened = true;
       },
       async next() {
         // if (this.status == 1) {
-          await axios.post("http://lit-king.mizucoffee.com/quiz/next");
+          await axios.post("https://e01b0f377f24.vps.mizucoffee.net/quiz/next");
 
         // }
       }
