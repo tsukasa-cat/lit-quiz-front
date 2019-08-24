@@ -212,7 +212,7 @@
                         password: "we_love_aldy"
                     },
                     {
-                        "name": "W",
+                        "name": "w",
                         "display_name": "W",
                         password: "we_love_aldy"
                     },
