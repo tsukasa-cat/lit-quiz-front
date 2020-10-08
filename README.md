@@ -1,6 +1,5 @@
 # lit-quiz
-
-> 2019todaiD-quiz
+みんなでクイズ大会をするときに作成したrepositoryデス
 
 ## Build Setup
 
